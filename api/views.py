@@ -12,9 +12,9 @@ from .models import User, Alumno, Padre, Curso, Nota, Salon
 # --- Login ---
 class LoginView(APIView):
     def post(self, request):
-        print(">>> POST /api/login/")
-        print(">>> request.data:", request.data)
-        print(">>> Content-Type:", request.content_type)
+        print("HEADERS:", request.headers)
+        print("BODY:", request.body)
+        print("DATA:", request.data)
         
         username = request.data.get("username")
         password = request.data.get("password")
