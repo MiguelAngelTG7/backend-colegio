@@ -12,10 +12,15 @@ from .models import User, Alumno, Padre, Curso, Nota, Salon
 # --- Login ---
 class LoginView(APIView):
     def post(self, request):
-        print("Datos recibidos en el login:", request.data)
+        print(">>> POST /api/login/")
+        print(">>> request.data:", request.data)
+        print(">>> Content-Type:", request.content_type)
+        
         username = request.data.get("username")
         password = request.data.get("password")
+        
         print("Username:", username, "Password:", password)  # Para verificar si vienen vacíos
+        
         user = authenticate(username=username, password=password)
         if user:
             refresh = RefreshToken.for_user(user)
